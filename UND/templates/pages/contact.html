@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="h-screen w-full bg-center bg-cover relative" style="background-image: url('{% static 'images/home-bg.jpg' %}');">
+    <div class="h-full w-full bg-black bg-opacity-70 overflow-y-auto">
+        <div class="h-full w-full max-w-[1300px] px-4 mx-auto flex items-center justify-center">
+            <div class="h-auto w-full max-w-lg p-8 flex flex-col items-center space-y-6 backdrop-blur-sm border border-gray-400">
+                <!-- Form Elements -->
+                <div class="w-full flex flex-col items-center space-y-6">
+                    <div class="flex flex-col space-y-2 w-full">
+                        <span class="text-white font-medium">Full Name</span>
+                        <input type="text" class="px-6 py-2 w-full border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white placeholder:text-white" placeholder="Full Name Here">
+                    </div>
+                    <div class="flex flex-col space-y-2 w-full">
+                        <span class="text-white font-medium">Email</span>
+                        <input type="text" class="px-6 py-2 w-full border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white placeholder:text-white" placeholder="Email Here">
+                    </div>
+                    <div class="flex flex-col space-y-2 w-full">
+                        <span class="text-white font-medium">Message</span>
+                        <textarea class="px-6 py-2 w-full border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white text-justify indent-0 placeholder:text-white">
+                        </textarea>
+                    </div>
+                    <button class="text-black font-semibold bg-yellow-300 rounded-full px-4 py-2">Contact Us</button>
+                </div>
+                <!-- Contact Info Below Button -->
+                <div class="w-full flex flex-col items-center justify-center space-y-4">
+                    <div class="text-center">
+                        <span class="text-4xl text-white font-medium">Contact Us</span>
+                        <span class="block text-yellow-300">sample@email.com</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-4xl text-white font-medium">Based In</span>
+                        <span class="block text-yellow-300">San Nicolas III, Bacoor City, Cavite, Philippines</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-8">
+                        <i class='bx bxl-facebook text-white text-3xl hover:text-yellow-400'></i>
+                        <i class='bx bxl-instagram text-white text-3xl hover:text-yellow-400'></i>
+                        <i class='bx bxl-twitter text-white text-3xl hover:text-yellow-400'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

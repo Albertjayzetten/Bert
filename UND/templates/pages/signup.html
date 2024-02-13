@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="h-screen w-full bg-center bg-cover relative" style="background-image: url('../static/images/bg.jpg');">
+        <div class="h-full w-full bg-black bg-opacity-70  overflow-y-auto ">
+            <div class="h-full w-full max-w-[1300px] px-4 mx-auto flex flex-col items-center justify-center">
+                <div class="py-4 flex justify-start w-full">
+                    <span class="text-4xl text-white">Create your Account</span>
+                </div>
+                <div class="h-auto w-full rounded border border-gray-400 p-8 flex flex-col space-y-6 backdrop-blur-sm">
+                    <div class="flex items-start space-x-6">
+                        <div class="w-full flex flex-col space-y-6">
+                            <div class="flex flex-col space-y-2">
+                                <span class="text-white font-medium">First Name</span>
+                                <input type="text" class="px-6 py-2 rounded border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white placeholder:text-white" placeholder="First name">
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <span class="text-white font-medium">Middle Name</span>
+                                <input type="text" class="px-6 py-2 rounded border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white placeholder:text-white" placeholder="Middle name">
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <span class="text-white font-medium">Last Name</span>
+                                <input type="text" class="px-6 py-2 rounded border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white placeholder:text-white" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="w-full flex flex-col space-y-6">
+                            <div class="flex flex-col space-y-2">
+                                <span class="text-white font-medium">Email</span>
+                                <input type="text" class="px-6 py-2 rounded border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white placeholder:text-white" placeholder="sample@email.com">
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <span class="text-white font-medium">Password</span>
+                                <input type="password" class="px-6 py-2 rounded border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white placeholder:text-white" placeholder="********">
+                            </div>
+                            <div class="flex flex-col space-y-2">
+                                <span class="text-white font-medium">Confirm Password</span>
+                                <input type="password" class="px-6 py-2 rounded border-0 border-b border-gray-300 bg-white bg-opacity-20 text-white placeholder:text-white" placeholder="********">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="text-black font-semibold bg-yellow-300 rounded-full px-4 py-2">Sign Up</button>
+                </div>
+                <div class="py-4 flex justify-start w-full">
+                    <span class="text-white">Already have an accout? <a href="{% url 'login' %}" class="text-blue-700">Login here</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

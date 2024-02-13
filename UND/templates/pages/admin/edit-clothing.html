@@ -1,0 +1,77 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+{% block content %}
+<div class="pt-4">
+    <div class="w-full h-[650px] max-w-[1300px] mx-auto px-4 py-4 pt-20">
+        <div class="mb-5">
+
+        </div>
+
+        <div class="mb-4 p-2 bg-gray-800 w-full">
+            <h2 class="font-medium text-white">Edit items</h2>
+        </div>
+
+        <form action="{% url 'clothing_edit' clothing.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="flex flex-col space-y-3">
+                <div class="w-full flex flex-col z-10">
+                    <label class="text-gray-600">Image</label>
+                    <input type="file" name="images" class="rounded border border-gray-300 z-10 font-light px-4 py-2" multiple>
+                </div>
+
+                {% if clothing.images.all %}
+                    <div class="flex items-center flex-wrap gap-2">
+                        {% for image in clothing.images.all %}
+                            <div class="w-14 h-14 rounded group border border-gray-200 rounded cursor-pointer">
+                                <img src="{{ image.image.url }}" alt="" class="w-14 h-14 rounded group-hover:hidden">
+                                <a href="{% url 'image_delete' clothing.id image.id %}" class="w-full h-full hidden group-hover:flex items-center justify-center rounded">
+                                    <i class='bx bx-trash text-red-500'></i>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="w-full flex flex-col z-10">
+                    <label class="text-gray-600">Name</label>
+                    <input type="text" name="name" class="rounded border border-gray-300 z-10 font-light px-4 py-2" placeholder="Item name" value="{{ clothing.name }}">
+                </div>
+                <div class="w-full flex flex-col z-10">
+                    <label class="text-gray-600">Description</label>
+                    <textarea type="text" name="description" class="rounded border border-gray-300 z-10 font-light px-4 py-2">
+                        {{ clothing.description }}
+                    </textarea>
+                </div>
+                <div class="w-full flex flex-col z-10">
+                    <label class="text-gray-600">Category</label>
+                    <select type="text" name="category" class="rounded border border-gray-300 z-10 font-light px-4 py-2">
+                        <option value="SHOES">SHOES</option>
+                        <option value="T-SHIRT">T-SHIRT</option>
+                        <option value="SHORT">SHORT</option>
+                        <option value="CAP">CAP</option>
+                    </select>
+                </div>
+                <div class="w-full flex items-center space-x-4">
+                    <div class="w-full flex flex-col z-10">
+                        <label class="text-gray-600">Price</label>
+                        <input type="number" name="price" class="rounded border border-gray-300 z-10 font-light px-4 py-2" placeholder="Price" value="{{ clothing.price }}">
+                    </div>
+                    <div class="w-full flex flex-col z-10">
+                        <label class="text-gray-600">Quantity</label>
+                        <input type="number" name="quantity" class="rounded border border-gray-300 z-10 font-light px-4 py-2" placeholder="Quantity" value="{{ clothing.quantity }}">
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center mt-4">
+                <a href="{% url 'clothing_list' %}" class="rounded bg-white shadow px-3 py-1 flex items-center w-fit group me-5">
+                    <i class='bx bx-chevron-left text-gray-400 group-hover:text-gray-600 text-2xl mr-1'></i>
+                    <span class="text-sm font-normal text-gray-400 group-hover:text-gray-600 pr-2">Back</span>
+                </a>
+                <button type="submit" class="px-4 py-2 rounded text-black bg-green-400">Update</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

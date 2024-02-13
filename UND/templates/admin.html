@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>UND</title>
+</head>
+<body>
+    <header class="fixed top-0 left-0 w-full z-30 bg-green-800">
+        <div class="w-full max-w-[1300px] mx-auto px-4 py-4 ">
+            <div class="w-full flex items-center justify-between">
+                <!-- Admin now placed on the left side -->
+                <div class="flex items-center">
+                    <a href="{% url 'clothing_list' %}" class="text-4xl font-bold text-white">UND</a>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav>
+                    <ul class="flex items-center space-x-8 text-white">
+                        <!-- Shuffled as per your request -->
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                    </ul>
+                </nav>
+
+                <!-- UND now placed on the right side -->
+                <div class="flex">
+                    <h1 class="text-4xl font-bold text-white">Clothing</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+</body>
+</html>

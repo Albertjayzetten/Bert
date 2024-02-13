@@ -1,0 +1,53 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+{% block content %}
+<section class="">
+    <div class="w-full max-w-7xl mx-auto px-4 pt-20">
+        <div class="flex items-center justify-between py-4">
+
+            <a href="{% url 'clothing_add' %}" class="px-4 py-2 bg-green-700 text-white rounded">Add Product</a>
+        </div>
+        <div class="bg-white rounded-md">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b border-green-200 bg-green-800 text-white">
+                        <th class="px-4 py-2 text-left">Item Name</th>
+                        <th class="px-4 py-2 text-left">Item Price</th>
+                        <th class="px-4 py-2 text-left">Category</th>
+                        <th class="px-4 py-2 text-left">Quantity</th>
+                        <th class="px-4 py-2 text-left">Image</th>
+                        <th class="px-4 py-2 text-left">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for clothing in clothing %}
+                        <tr class="border-b border-gray-200">
+                            <td class="px-4 py-2">{{ clothing.name }}</td>
+                            <td class="px-4 py-2">{{ clothing.price }}</td>
+                            <td class="px-4 py-2">{{ clothing.category }}</td>
+                            <td class="px-4 py-2">{{ clothing.quantity }}</td>
+                            <td class="px-4 py-2">
+                                {% if clothing.images.all %}
+                                    <div class="flex items-center flex-wrap gap-2">
+                                        {% for image in clothing.images.all %}
+                                            <img src="{{ image.image.url }}" alt="" class="w-14 h-14 rounded">
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </td>
+                            <td class="px-4 py-2 flex items-center space-x-3">
+                                <a href="{% url 'clothing_edit' clothing.id %}" class="px-4 py-2 bg-cyan-500 text-white rounded">Edit</a>
+                                <form action="{% url 'clothing_delete' clothing.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button class="px-4 py-2 bg-cyan-500 text-white rounded">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{%endblock content %}

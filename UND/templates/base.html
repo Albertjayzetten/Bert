@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>UND</title>
+</head>
+<body>
+    <header class="fixed top-0 lef-o w-full z-30 backdrop-blur-sm">
+        <div class="w-full max-w-[1300px] mx-auto px-4 py-4 border-b border-gray-400">
+            <div class="w-full flex items-center ">
+                <div class="flex me-20">
+                    <h1 class="text-4xl text-center font-bold text-green-400">UND</h1>
+                </div>
+                <nav class="flex">
+                    <ul class="flex items-center space-x-20 text-white">
+                        <li>
+                            <a href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about' %}">About</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'clothing_list' %}">Clothing</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock content %}
+
+    </main>
+
+
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>
